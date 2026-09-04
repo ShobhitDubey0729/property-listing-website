@@ -1,0 +1,534 @@
+{
+  "properties": [
+    {
+      "id": "prop-goa-01",
+      "title": "Luxury 3BHK Portuguese Pool Villa with Lush Garden",
+      "description": "Freestanding private Portuguese-style villa in North Goa, just 5 minutes from Anjuna beach. Full independent compound with private pool, open-concept kitchen, and high ceilings. Complete NOC from local Panchayat and zero society restrictions on guest turnovers.",
+      "property_type": "Villa",
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "area_sqft": 2800,
+      "furnishing_status": "Fully Furnished",
+      "address": "Deulvaddo, Near German Bakery, Anjuna",
+      "city": "Goa",
+      "locality": "Anjuna",
+      "lat": 15.5841,
+      "lng": 73.7442,
+      "mapCoords": {
+        "x": 38,
+        "y": 62
+      },
+      "monthly_rent": 140000,
+      "security_deposit": 280000,
+      "min_lease_months": 12,
+      "str_friendly": true,
+      "str_tags": [
+        "Society NOC Ready",
+        "Private Pool",
+        "Smart Lock Installed",
+        "No Noise Curfew",
+        "Separate Entry",
+        "High Tourist Density"
+      ],
+      "est_nightly_rate": 14500,
+      "est_occupancy_pct": 72,
+      "est_annual_roi_pct": 128,
+      "nearby_places": [
+        {
+          "name": "Anjuna Beach & Flea Market",
+          "dist": "1.1 km • 4 min"
+        },
+        {
+          "name": "Thalassa & Curlies Nightlife",
+          "dist": "2.3 km • 7 min"
+        },
+        {
+          "name": "Goa Mopa Airport (GOX)",
+          "dist": "29 km • 35 min"
+        },
+        {
+          "name": "Supermarket & Wine Store",
+          "dist": "400 m • 3 min walk"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+      ],
+      "owner": {
+        "name": "Rohit & Cheryl Fernandes",
+        "role": "Property Owner",
+        "verified": true,
+        "phone": "+91 98230 44XXX",
+        "member_since": "Oct 2023",
+        "response_time": "< 1 hour",
+        "rating": 4.9,
+        "properties_listed": 2
+      },
+      "society_rules": {
+        "noc_available": true,
+        "guest_turnover_allowed": true,
+        "smart_lock_allowed": true,
+        "noise_curfew": "None (Standalone Plot)",
+        "cleaning_team_access": "24/7 dedicated service gate",
+        "subletting_clause_in_contract": true
+      },
+      "featured": true,
+      "verified": true,
+      "status": "live",
+      "created_at": "2026-08-10"
+    },
+    {
+      "id": "prop-blr-02",
+      "title": "Chic Tech Penthouse with Private Terrace & Workstations",
+      "description": "Designer 2BHK duplex penthouse in prime Indiranagar 100ft Road vicinity. Built specifically with digital nomads and business travellers in mind. Equipped with 1Gbps fiber lines, smart keypads, and luxury Scandinavian furniture. Gated standalone low-rise building with STR permission.",
+      "property_type": "Penthouse",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "area_sqft": 1650,
+      "furnishing_status": "Fully Furnished",
+      "address": "12th Main, HAL 2nd Stage, Indiranagar",
+      "city": "Bengaluru",
+      "locality": "Indiranagar",
+      "lat": 12.9719,
+      "lng": 77.6412,
+      "mapCoords": {
+        "x": 58,
+        "y": 70
+      },
+      "monthly_rent": 95000,
+      "security_deposit": 200000,
+      "min_lease_months": 11,
+      "str_friendly": true,
+      "str_tags": [
+        "Society NOC Ready",
+        "Smart Lock Installed",
+        "High Speed Wifi",
+        "Private Terrace",
+        "Business Hub",
+        "Self Check-in"
+      ],
+      "est_nightly_rate": 6800,
+      "est_occupancy_pct": 78,
+      "est_annual_roi_pct": 95,
+      "nearby_places": [
+        {
+          "name": "Indiranagar 100ft Rd Metro",
+          "dist": "450 m • 5 min walk"
+        },
+        {
+          "name": "Toit & 100+ Cafes/Pubs",
+          "dist": "300 m • 3 min walk"
+        },
+        {
+          "name": "Embassy GolfLinks (EGL)",
+          "dist": "3.6 km • 12 min"
+        },
+        {
+          "name": "Kempegowda Airport (BLR)",
+          "dist": "39 km • 45 min"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80"
+      ],
+      "owner": {
+        "name": "Siddharth Rao",
+        "role": "Property Owner (NRI)",
+        "verified": true,
+        "phone": "+91 99801 12XXX",
+        "member_since": "Jan 2024",
+        "response_time": "< 30 mins",
+        "rating": 5,
+        "properties_listed": 3
+      },
+      "society_rules": {
+        "noc_available": true,
+        "guest_turnover_allowed": true,
+        "smart_lock_allowed": true,
+        "noise_curfew": "11:00 PM (Terrace)",
+        "cleaning_team_access": "Biometric & Keypad entry",
+        "subletting_clause_in_contract": true
+      },
+      "featured": true,
+      "verified": true,
+      "status": "live",
+      "created_at": "2026-08-14"
+    },
+    {
+      "id": "prop-mum-03",
+      "title": "Sea-Facing Modernist 2BHK Apartment at Bandra Carter Road",
+      "description": "Rare lease opportunity on Carter Road promenade with uninterrupted Arabian Sea views. Upmarket building with dual elevators, 24x7 security, and dedicated basement car parking. Landlord is eager for a high-end corporate/STR host operator on a 2-3 year master lease.",
+      "property_type": "Apartment",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "area_sqft": 1200,
+      "furnishing_status": "Semi-Furnished",
+      "address": "Off Carter Road, Bandra West",
+      "city": "Mumbai",
+      "locality": "Bandra West",
+      "lat": 19.0657,
+      "lng": 72.8276,
+      "mapCoords": {
+        "x": 34,
+        "y": 52
+      },
+      "monthly_rent": 165000,
+      "security_deposit": 400000,
+      "min_lease_months": 24,
+      "str_friendly": true,
+      "str_tags": [
+        "Society NOC Ready",
+        "Sea View",
+        "Elevator Access",
+        "High Demand Spot",
+        "24/7 Security"
+      ],
+      "est_nightly_rate": 12500,
+      "est_occupancy_pct": 82,
+      "est_annual_roi_pct": 86,
+      "nearby_places": [
+        {
+          "name": "Carter Road Sea Promenade",
+          "dist": "50 m • 1 min walk"
+        },
+        {
+          "name": "Bandra Bandstand & Fort",
+          "dist": "2.6 km • 8 min"
+        },
+        {
+          "name": "BKC Financial District",
+          "dist": "5.8 km • 15 min"
+        },
+        {
+          "name": "Chhatrapati Shivaji Airport (BOM)",
+          "dist": "9.5 km • 20 min"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
+      ],
+      "owner": {
+        "name": "Adv. Alok Merchant",
+        "role": "Property Owner",
+        "verified": true,
+        "phone": "+91 98200 89XXX",
+        "member_since": "Nov 2023",
+        "response_time": "< 2 hours",
+        "rating": 4.8,
+        "properties_listed": 1
+      },
+      "society_rules": {
+        "noc_available": true,
+        "guest_turnover_allowed": true,
+        "smart_lock_allowed": true,
+        "noise_curfew": "10:30 PM",
+        "cleaning_team_access": "Daily security log pass",
+        "subletting_clause_in_contract": true
+      },
+      "featured": false,
+      "verified": true,
+      "status": "live",
+      "created_at": "2026-08-18"
+    },
+    {
+      "id": "prop-jpr-04",
+      "title": "Restored Heritage Haveli Suite Compound with Courtyard",
+      "description": "4-Bedroom authentic Rajasthani heritage haveli with traditional jharokhas, central fountain courtyard, and rooftop view of Nahargarh Fort. Highly coveted by foreign tourists and wedding guests. Zero society interference; independent heritage property with master lease available.",
+      "property_type": "Independent House",
+      "bedrooms": 4,
+      "bathrooms": 4,
+      "area_sqft": 3400,
+      "furnishing_status": "Fully Furnished",
+      "address": "Near Civil Lines Metro, C-Scheme",
+      "city": "Jaipur",
+      "locality": "C-Scheme",
+      "lat": 26.9124,
+      "lng": 75.801,
+      "mapCoords": {
+        "x": 44,
+        "y": 36
+      },
+      "monthly_rent": 110000,
+      "security_deposit": 220000,
+      "min_lease_months": 12,
+      "str_friendly": true,
+      "str_tags": [
+        "Society NOC Ready",
+        "Heritage Charm",
+        "Central Courtyard",
+        "Rooftop View",
+        "High Tourist Density",
+        "Independent Entry"
+      ],
+      "est_nightly_rate": 13000,
+      "est_occupancy_pct": 68,
+      "est_annual_roi_pct": 118,
+      "nearby_places": [
+        {
+          "name": "Civil Lines Metro Station",
+          "dist": "700 m • 8 min walk"
+        },
+        {
+          "name": "City Palace & Hawa Mahal",
+          "dist": "4.5 km • 14 min"
+        },
+        {
+          "name": "Central Park & Jaipur Club",
+          "dist": "1.4 km • 5 min"
+        },
+        {
+          "name": "Jaipur International Airport (JAI)",
+          "dist": "10.8 km • 22 min"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80"
+      ],
+      "owner": {
+        "name": "Vikramaditya Singh Rathore",
+        "role": "Property Owner",
+        "verified": true,
+        "phone": "+91 94140 77XXX",
+        "member_since": "Feb 2024",
+        "response_time": "< 1 hour",
+        "rating": 4.9,
+        "properties_listed": 2
+      },
+      "society_rules": {
+        "noc_available": true,
+        "guest_turnover_allowed": true,
+        "smart_lock_allowed": true,
+        "noise_curfew": "None (Private Compound)",
+        "cleaning_team_access": "On-site caretaker quarter included",
+        "subletting_clause_in_contract": true
+      },
+      "featured": true,
+      "verified": true,
+      "status": "live",
+      "created_at": "2026-08-20"
+    },
+    {
+      "id": "prop-man-05",
+      "title": "Cedar Wood Himalayan Chalet with Snow Mountain Views",
+      "description": "Picturesque 3BHK wooden chalet nestled in Old Manali apple orchards. Features heated wooden floors, stone fireplace, wraparound glass deck overlooking Rohtang peaks. Year-round tourism from both summer travelers and winter ski enthusiasts.",
+      "property_type": "Villa",
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "area_sqft": 2200,
+      "furnishing_status": "Fully Furnished",
+      "address": "Club House Road, Old Manali",
+      "city": "Manali",
+      "locality": "Old Manali",
+      "lat": 32.2562,
+      "lng": 77.1728,
+      "mapCoords": {
+        "x": 42,
+        "y": 22
+      },
+      "monthly_rent": 75000,
+      "security_deposit": 150000,
+      "min_lease_months": 12,
+      "str_friendly": true,
+      "str_tags": [
+        "Society NOC Ready",
+        "Mountain View",
+        "Fireplace",
+        "Self Check-in",
+        "Heated Floors",
+        "High Tourist Density"
+      ],
+      "est_nightly_rate": 9200,
+      "est_occupancy_pct": 65,
+      "est_annual_roi_pct": 124,
+      "nearby_places": [
+        {
+          "name": "Manu Temple & Hippie Cafes",
+          "dist": "350 m • 5 min walk"
+        },
+        {
+          "name": "Hidimba Devi Ancient Temple",
+          "dist": "1.2 km • 15 min walk"
+        },
+        {
+          "name": "Mall Road Manali",
+          "dist": "2.4 km • 8 min"
+        },
+        {
+          "name": "Solang Valley Snow Point",
+          "dist": "12.5 km • 30 min"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1542718610-a1d656d1884c?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=800&q=80"
+      ],
+      "owner": {
+        "name": "Tsering & Maya Negi",
+        "role": "Property Owner",
+        "verified": true,
+        "phone": "+91 98160 55XXX",
+        "member_since": "Dec 2023",
+        "response_time": "< 4 hours",
+        "rating": 4.9,
+        "properties_listed": 1
+      },
+      "society_rules": {
+        "noc_available": true,
+        "guest_turnover_allowed": true,
+        "smart_lock_allowed": true,
+        "noise_curfew": "11:00 PM outdoors",
+        "cleaning_team_access": "Independent driveway access",
+        "subletting_clause_in_contract": true
+      },
+      "featured": false,
+      "verified": true,
+      "status": "live",
+      "created_at": "2026-08-22"
+    },
+    {
+      "id": "prop-rsh-06",
+      "title": "Ganges-View Yoga Penthouse with Rooftop Meditation Deck",
+      "description": "Serene 2BHK duplex penthouse in Tapovan overlooking the holy Ganges. Fully soundproofed glass windows, natural bamboo interiors, and dedicated rooftop yoga shala. Exceptional repeat occupancy from international yoga retreat participants and spiritual tourists.",
+      "property_type": "Penthouse",
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "area_sqft": 1500,
+      "furnishing_status": "Fully Furnished",
+      "address": "Badrinath Road, Tapovan",
+      "city": "Rishikesh",
+      "locality": "Tapovan",
+      "lat": 30.1347,
+      "lng": 78.3249,
+      "mapCoords": {
+        "x": 48,
+        "y": 28
+      },
+      "monthly_rent": 55000,
+      "security_deposit": 110000,
+      "min_lease_months": 11,
+      "str_friendly": true,
+      "str_tags": [
+        "Society NOC Ready",
+        "River View",
+        "Rooftop Terrace",
+        "Self Check-in",
+        "Smart Lock Installed",
+        "High Tourist Density"
+      ],
+      "est_nightly_rate": 6200,
+      "est_occupancy_pct": 74,
+      "est_annual_roi_pct": 135,
+      "nearby_places": [
+        {
+          "name": "Laxman Jhula & River Ghats",
+          "dist": "650 m • 8 min walk"
+        },
+        {
+          "name": "Secret Waterfall & Cafes",
+          "dist": "1.1 km • 15 min"
+        },
+        {
+          "name": "Parmarth Niketan Ashram",
+          "dist": "2.9 km • 10 min"
+        },
+        {
+          "name": "Dehradun Airport (DED)",
+          "dist": "21.5 km • 35 min"
+        }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80",
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1540518614846-7ede433c4ef2?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
+      ],
+      "owner": {
+        "name": "Acharya Devratan",
+        "role": "Property Owner",
+        "verified": true,
+        "phone": "+91 97560 33XXX",
+        "member_since": "Mar 2024",
+        "response_time": "< 1 hour",
+        "rating": 5,
+        "properties_listed": 1
+      },
+      "society_rules": {
+        "noc_available": true,
+        "guest_turnover_allowed": true,
+        "smart_lock_allowed": true,
+        "noise_curfew": "10:00 PM",
+        "cleaning_team_access": "Dedicated linen storage & elevator pass",
+        "subletting_clause_in_contract": true
+      },
+      "featured": true,
+      "verified": true,
+      "status": "live",
+      "created_at": "2026-08-25"
+    }
+  ],
+  "inquiries": [
+    {
+      "id": "inq-101",
+      "property_id": "prop-goa-01",
+      "property_title": "Luxury 3BHK Portuguese Pool Villa with Lush Garden",
+      "operator_name": "Aman Kapoor (Zenith Stays)",
+      "operator_rating": 4.95,
+      "portfolio_size": "14 Superhost Listings in Goa & Mumbai",
+      "proposed_terms": "12-month master lease at ₹1,40,000/mo. Will install Yale smart lock & sensor monitoring.",
+      "status": "New Inquiry",
+      "date": "2026-08-29"
+    },
+    {
+      "id": "inq-102",
+      "property_id": "prop-blr-02",
+      "property_title": "Chic Tech Penthouse with Private Terrace",
+      "operator_name": "Divya Nair (StayUrban Hospitality)",
+      "operator_rating": 4.88,
+      "portfolio_size": "8 Premium Apartments in Bengaluru",
+      "proposed_terms": "24-month lease with 10% annual escalation. Full maintenance guarantee.",
+      "status": "Reviewing",
+      "date": "2026-08-30"
+    }
+  ],
+  "cities": [
+    "All Cities",
+    "Goa",
+    "Bengaluru",
+    "Mumbai",
+    "Jaipur",
+    "Manali",
+    "Rishikesh"
+  ],
+  "types": [
+    "All Types",
+    "Villa",
+    "Apartment",
+    "Penthouse",
+    "Independent House"
+  ],
+  "amenities": [
+    "Society NOC Ready",
+    "Smart Lock Installed",
+    "Private Pool",
+    "Sea View",
+    "High Speed Wifi",
+    "High Tourist Density",
+    "Separate Entry",
+    "Mountain View",
+    "River View"
+  ]
+}

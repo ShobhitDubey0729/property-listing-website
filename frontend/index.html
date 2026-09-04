@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PropLease — Property Listing Marketplace for Airbnb & Short-Term Rental Leasing</title>
+  <meta name="description" content="The premier marketplace connecting property owners with STR operators, co-hosts, and rental arbitrage investors. Find pre-approved Airbnb-friendly master leases with verified society NOCs and high ROI." />
+  <meta name="keywords" content="rental arbitrage, airbnb leasing, master lease, short term rental property, airbnb friendly apartments, str operator, proplease" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/header-footer.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body>
+
+  <!-- 1. NAVIGATION HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo">
+        <div class="brand-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <span>PropLease</span>
+        <span class="brand-tag">STR Arbitrage</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="nav-links">
+        <a href="#explore" class="nav-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Explore Properties
+        </a>
+        <a href="#roi-calculator" class="nav-link">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>
+          ROI Simulator
+        </a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#resources" class="nav-link">Legal & Guide</a>
+        <a href="#operator-dashboard" class="nav-link" id="nav-portal-link">Operator Hub</a>
+      </nav>
+
+      <!-- Role Switcher & Primary Action -->
+      <div class="header-actions">
+        <!-- Interactive Perspective Switcher -->
+        <div class="role-switcher-container" title="Switch User Role Perspective">
+          <button class="role-btn active" data-role="operator" onclick="setRoleMode('operator')">Operator</button>
+          <button class="role-btn" data-role="owner" onclick="setRoleMode('owner')">Landlord</button>
+          <button class="role-btn role-admin" data-role="admin" onclick="setRoleMode('admin')">Admin</button>
+        </div>
+
+        <a href="#list-property" class="btn btn-primary btn-sm">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          List Property
+        </a>
+
+        <div id="auth-slot" style="display:flex; align-items:center; gap:0.35rem;"></div>
+
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <a href="#explore" class="nav-link" onclick="toggleMobileMenu()">Explore Deals</a>
+    <a href="#roi-calculator" class="nav-link" onclick="toggleMobileMenu()">ROI Simulator</a>
+    <a href="#list-property" class="nav-link" onclick="toggleMobileMenu()">List Your Property</a>
+    <a href="#owner-dashboard" class="nav-link" onclick="toggleMobileMenu()">Landlord Dashboard</a>
+    <a href="#operator-dashboard" class="nav-link" onclick="toggleMobileMenu()">Operator Hub</a>
+    <a href="#admin-panel" class="nav-link" onclick="toggleMobileMenu()">Admin Panel</a>
+    <a href="#pricing" class="nav-link" onclick="toggleMobileMenu()">Pricing & Plans</a>
+    <a href="#resources" class="nav-link" onclick="toggleMobileMenu()">Legal & Resources</a>
+    <a href="#login" class="nav-link" onclick="toggleMobileMenu()">Sign in</a>
+    <a href="#signup" class="nav-link" onclick="toggleMobileMenu()">Sign up</a>
+  </div>
+
+  <!-- 2. ROUTER ROOT VIEW CONTAINER -->
+  <main id="app-root">
+    <!-- Dynamic views mounted via router.js -->
+  </main>
+
+  <!-- 3. GLOBAL FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div>
+          <a href="#home" class="brand-logo" style="margin-bottom: 1rem;">
+            <div class="brand-icon-wrap">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <span>PropLease</span>
+          </a>
+          <p class="text-sm" style="line-height: 1.6; max-width: 300px; margin-bottom: 1.25rem;">
+            The dedicated marketplace bridging property owners with professional Airbnb & STR operators for master leases.
+          </p>
+          <div class="social-links">
+            <a href="javascript:void(0)" class="social-icon-btn" title="Twitter">𝕏</a>
+            <a href="javascript:void(0)" class="social-icon-btn" title="LinkedIn">in</a>
+            <a href="javascript:void(0)" class="social-icon-btn" title="Instagram">📸</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">For Operators</div>
+          <div class="footer-link-list">
+            <a href="#explore" class="footer-link">Browse STR Listings</a>
+            <a href="#roi-calculator" class="footer-link">Arbitrage ROI Simulator</a>
+            <a href="#pricing" class="footer-link">Operator Pro Pass</a>
+            <a href="#operator-dashboard" class="footer-link">Shortlisted Deals</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">For Landlords</div>
+          <div class="footer-link-list">
+            <a href="#list-property" class="footer-link">List Your Property</a>
+            <a href="#owner-dashboard" class="footer-link">Landlord Portal</a>
+            <a href="#pricing" class="footer-link">Featured Boost</a>
+            <a href="#resources" class="footer-link">Standard Sublease NOC</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Top Destinations</div>
+          <div class="footer-link-list">
+            <a href="#explore" class="footer-link" onclick="quickFilterCity('Goa')">Goa Villas</a>
+            <a href="#explore" class="footer-link" onclick="quickFilterCity('Bengaluru')">Bengaluru Tech Penthouses</a>
+            <a href="#explore" class="footer-link" onclick="quickFilterCity('Mumbai')">Mumbai Sea-Facing</a>
+            <a href="#explore" class="footer-link" onclick="quickFilterCity('Manali')">Manali Mountain Chalets</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Trust & Safety</div>
+          <div class="footer-link-list">
+            <a href="#resources" class="footer-link">RWA Society Guidelines</a>
+            <a href="#resources" class="footer-link">Decibel Sensor Protocols</a>
+            <a href="#admin-panel" class="footer-link">Admin Moderation</a>
+            <a href="javascript:void(0)" class="footer-link" onclick="window.Toast.info('Privacy Policy is compliant with DPDP Act 2023')">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 PropLease Technologies Inc. All rights reserved. Master lease platform built for rental arbitrage.
+        </div>
+        <div style="display: flex; gap: 1.5rem;">
+          <span>🔒 256-Bit Encrypted</span>
+          <span>🛡️ Verified Landlords</span>
+          <span>📋 E-Sign Compatible</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts in dependency order -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/components/toast.js"></script>
+  <script src="js/components/mapPopup.js"></script>
+  <script src="js/components/propertyCard.js"></script>
+  <script src="js/components/propertyDetail.js"></script>
+  <script src="js/components/searchFilter.js"></script>
+  <script src="js/components/listingWizard.js"></script>
+  <script src="js/components/dashboards.js"></script>
+  <script src="js/components/roiCalculator.js"></script>
+  <script src="js/components/compareModal.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
