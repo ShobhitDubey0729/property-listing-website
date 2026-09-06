@@ -1,21 +1,15 @@
-/**
- * Central PropLease API client
- */
+import { API_BASE_URL, TOKEN_KEY, USER_KEY } from "./config.js";
 
-const API_BASE_URL = window.APP_CONFIG?.API_BASE_URL || window.location.origin;
-const TOKEN_KEY = "proplease_token";
-const USER_KEY = "proplease_user";
-
-function getAuthToken() {
+export function getAuthToken() {
   return localStorage.getItem(TOKEN_KEY);
 }
 
-function setAuthToken(token) {
+export function setAuthToken(token) {
   if (token) localStorage.setItem(TOKEN_KEY, token);
   else localStorage.removeItem(TOKEN_KEY);
 }
 
-function getStoredUser() {
+export function getStoredUser() {
   try {
     return JSON.parse(localStorage.getItem(USER_KEY) || "null");
   } catch {
@@ -23,12 +17,12 @@ function getStoredUser() {
   }
 }
 
-function setStoredUser(user) {
+export function setStoredUser(user) {
   if (user) localStorage.setItem(USER_KEY, JSON.stringify(user));
   else localStorage.removeItem(USER_KEY);
 }
 
-async function apiFetch(path, options = {}) {
+export async function apiFetch(path, options = {}) {
   const headers = Object.assign({}, options.headers || {});
   const token = getAuthToken();
   if (token) headers.Authorization = `Bearer ${token}`;
@@ -59,7 +53,7 @@ async function apiFetch(path, options = {}) {
   return data;
 }
 
-const api = {
+export const api = {
   health: () => apiFetch("/api/health"),
   stats: () => apiFetch("/api/stats"),
   signup: (body) => apiFetch("/api/auth/signup", { method: "POST", body }),
@@ -100,13 +94,3 @@ const api = {
   adminActivate: (id) => apiFetch(`/api/admin/properties/${id}/activate`, { method: "PUT" }),
   adminDeactivate: (id) => apiFetch(`/api/admin/properties/${id}/deactivate`, { method: "PUT" })
 };
-
-window.API_BASE_URL = API_BASE_URL;
-window.TOKEN_KEY = TOKEN_KEY;
-window.USER_KEY = USER_KEY;
-window.getAuthToken = getAuthToken;
-window.setAuthToken = setAuthToken;
-window.getStoredUser = getStoredUser;
-window.setStoredUser = setStoredUser;
-window.apiFetch = apiFetch;
-window.api = api;

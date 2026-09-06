@@ -1,8 +1,8 @@
-/**
- * PropLease state — UI cache backed by FastAPI, not localStorage business data
- */
+import { api, getAuthToken, setAuthToken, getStoredUser, setStoredUser } from "./api/client.js";
+import { DEMO_ACCOUNTS } from "./utils/format.js";
+import { SEED_PROPERTIES } from "./data/seed.js";
 
-class AppState {
+export class AppState {
   constructor() {
     this.subscribers = [];
     this.properties = [];
@@ -13,7 +13,7 @@ class AppState {
     this.inquiries = [];
     this.ownerInquiries = [];
     this.stats = {};
-    this.currentUser = window.getStoredUser ? window.getStoredUser() : null;
+    this.currentUser = getStoredUser();
     this.currentRole = this.currentUser?.role || "operator";
     this.compareList = [];
     this.filters = {
@@ -27,12 +27,14 @@ class AppState {
       viewMode: "grid"
     };
     this.selectedPropertyId = null;
-    this.currentStepInWizard = 1;
     this.ready = false;
   }
 
   subscribe(callback) {
     this.subscribers.push(callback);
+    return () => {
+      this.subscribers = this.subscribers.filter((cb) => cb !== callback);
+    };
   }
 
   notify(event, payload) {
@@ -46,14 +48,17 @@ class AppState {
   }
 
   async bootstrap() {
-    if (window.getAuthToken && window.getAuthToken()) {
+    if (this._bootstrapping) return;
+    this._bootstrapping = true;
+    try {
+    if (getAuthToken()) {
       try {
-        this.currentUser = await window.api.me();
-        window.setStoredUser(this.currentUser);
+        this.currentUser = await api.me();
+        setStoredUser(this.currentUser);
         this.currentRole = this.currentUser.role;
       } catch {
-        window.setAuthToken(null);
-        window.setStoredUser(null);
+        setAuthToken(null);
+        setStoredUser(null);
         this.currentUser = null;
         this.currentRole = "operator";
       }
@@ -61,11 +66,14 @@ class AppState {
     await Promise.all([this.loadPublicProperties(), this.loadStats(), this.refreshSessionData()]);
     this.ready = true;
     this.notify("ready", null);
+    } finally {
+      this._bootstrapping = false;
+    }
   }
 
   async loadStats() {
     try {
-      this.stats = await window.api.stats();
+      this.stats = await api.stats();
     } catch {
       this.stats = {};
     }
@@ -88,11 +96,11 @@ class AppState {
 
   async loadPublicProperties() {
     try {
-      const data = await window.api.listProperties(this.filterQuery());
+      const data = await api.listProperties(this.filterQuery());
       this.properties = data.items || [];
     } catch (err) {
       console.warn("Property load failed", err);
-      this.properties = window.SEED_PROPERTIES ? [...window.SEED_PROPERTIES] : [];
+      this.properties = [...SEED_PROPERTIES];
     }
     this.notify("propertiesLoaded", this.properties);
   }
@@ -105,36 +113,38 @@ class AppState {
       this.ownerListings = [];
       this.adminListings = [];
       this.ownerInquiries = [];
+      this.notify("sessionCleared", null);
       return;
     }
     try {
       if (this.currentRole === "operator" || this.currentRole === "admin") {
-        const favs = await window.api.listFavorites();
+        const favs = await api.listFavorites();
         this.favorites = favs.property_ids || [];
         this.favoriteItems = favs.items || [];
-        const inq = await window.api.myInquiries();
+        const inq = await api.myInquiries();
         this.inquiries = inq.items || [];
       }
       if (this.currentRole === "owner" || this.currentRole === "admin") {
-        const mine = await window.api.ownerProperties();
+        const mine = await api.ownerProperties();
         this.ownerListings = mine.items || [];
-        const leads = await window.api.ownerInquiries();
+        const leads = await api.ownerInquiries();
         this.ownerInquiries = leads.items || [];
       }
       if (this.currentRole === "admin") {
-        const all = await window.api.adminProperties();
+        const all = await api.adminProperties();
         this.adminListings = all.items || [];
       }
     } catch (err) {
       console.warn("Session data load failed", err);
     }
+    this.notify("sessionLoaded", null);
   }
 
   async login(email, password) {
-    const res = await window.api.login({ email, password });
-    window.setAuthToken(res.access_token);
+    const res = await api.login({ email, password });
+    setAuthToken(res.access_token);
     this.currentUser = res.user;
-    window.setStoredUser(res.user);
+    setStoredUser(res.user);
     this.currentRole = res.user.role;
     await Promise.all([this.loadPublicProperties(), this.refreshSessionData()]);
     this.notify("roleChanged", this.currentRole);
@@ -142,10 +152,10 @@ class AppState {
   }
 
   async signup(payload) {
-    const res = await window.api.signup(payload);
-    window.setAuthToken(res.access_token);
+    const res = await api.signup(payload);
+    setAuthToken(res.access_token);
     this.currentUser = res.user;
-    window.setStoredUser(res.user);
+    setStoredUser(res.user);
     this.currentRole = res.user.role;
     await Promise.all([this.loadPublicProperties(), this.refreshSessionData()]);
     this.notify("roleChanged", this.currentRole);
@@ -154,12 +164,12 @@ class AppState {
 
   async logout() {
     try {
-      await window.api.logout();
+      await api.logout();
     } catch {
       /* ignore */
     }
-    window.setAuthToken(null);
-    window.setStoredUser(null);
+    setAuthToken(null);
+    setStoredUser(null);
     this.currentUser = null;
     this.currentRole = "operator";
     this.favorites = [];
@@ -173,36 +183,30 @@ class AppState {
   }
 
   async loginDemo(role) {
-    const creds = window.DEMO_ACCOUNTS[role];
+    const creds = DEMO_ACCOUNTS[role];
     if (!creds) return;
     return this.login(creds.email, creds.password);
   }
 
-  setRole(role) {
-    this.loginDemo(role).catch((err) => {
-      if (window.Toast) window.Toast.warning(err.message || "Could not switch account");
-    });
-  }
-
-  async toggleFavorite(propertyId) {
+  async toggleFavorite(propertyId, toast) {
     if (!this.currentUser) {
-      if (window.Toast) window.Toast.warning("Sign in to shortlist properties");
+      toast?.warning("Sign in to shortlist properties");
       window.location.hash = "#login";
       return false;
     }
     const isFav = this.favorites.includes(propertyId);
     try {
       if (isFav) {
-        await window.api.removeFavorite(propertyId);
+        await api.removeFavorite(propertyId);
         this.favorites = this.favorites.filter((id) => id !== propertyId);
       } else {
-        await window.api.addFavorite(propertyId);
+        await api.addFavorite(propertyId);
         this.favorites.push(propertyId);
       }
       this.notify("favoritesChanged", { propertyId, isFavorite: !isFav });
       return !isFav;
     } catch (err) {
-      if (window.Toast) window.Toast.warning(err.message || "Could not update shortlist");
+      toast?.warning(err.message || "Could not update shortlist");
       return isFav;
     }
   }
@@ -234,6 +238,11 @@ class AppState {
 
   setFilter(key, value) {
     this.filters[key] = value;
+    const skipReload = key === "viewMode" || key === "selectedTags";
+    if (skipReload) {
+      this.notify("filterChanged", { key, value, filters: this.filters });
+      return;
+    }
     this.loadPublicProperties().then(() => {
       this.notify("filterChanged", { key, value, filters: this.filters });
     });
@@ -255,32 +264,21 @@ class AppState {
     });
   }
 
-  addProperty(newProp) {
-    this.properties.unshift(newProp);
-    this.ownerListings.unshift(newProp);
-    this.notify("propertyAdded", newProp);
-  }
-
   async updatePropertyStatus(propertyId, status) {
-    try {
-      const updated = await window.api.updateProperty(propertyId, { status });
-      const apply = (list) => {
-        const idx = list.findIndex((p) => p.id === propertyId);
-        if (idx > -1) list[idx] = updated;
-      };
-      apply(this.properties);
-      apply(this.ownerListings);
-      apply(this.adminListings);
-      this.notify("propertyStatusUpdated", { propertyId, status: updated.status });
-      return updated;
-    } catch (err) {
-      if (window.Toast) window.Toast.warning(err.message || "Could not update listing");
-      throw err;
-    }
+    const updated = await api.updateProperty(propertyId, { status });
+    const apply = (list) => {
+      const idx = list.findIndex((p) => p.id === propertyId);
+      if (idx > -1) list[idx] = updated;
+    };
+    apply(this.properties);
+    apply(this.ownerListings);
+    apply(this.adminListings);
+    this.notify("propertyStatusUpdated", { propertyId, status: updated.status });
+    return updated;
   }
 
   async addInquiry(inquiry) {
-    const created = await window.api.createInquiry(inquiry.property_id, {
+    const created = await api.createInquiry(inquiry.property_id, {
       message: inquiry.proposed_terms,
       proposed_tenure_months: inquiry.proposed_tenure_months,
       proposed_rent: inquiry.proposed_rent,
@@ -316,8 +314,9 @@ class AppState {
     const existing = this.getPropertyById(id);
     if (existing) return existing;
     try {
-      const prop = await window.api.getProperty(id);
+      const prop = await api.getProperty(id);
       this.properties.push(prop);
+      this.notify("propertyLoaded", prop);
       return prop;
     } catch {
       return null;
@@ -325,4 +324,4 @@ class AppState {
   }
 }
 
-window.store = new AppState();
+export const store = new AppState();

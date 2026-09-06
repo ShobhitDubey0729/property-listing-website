@@ -2,7 +2,7 @@
  * PropLease Seed Dataset & Market Constants
  */
 
-const SEED_PROPERTIES = [
+export const SEED_PROPERTIES = [
   {
     id: "prop-goa-01",
     title: "Luxury 3BHK Portuguese Pool Villa with Lush Garden",
@@ -353,7 +353,7 @@ const SEED_PROPERTIES = [
   }
 ];
 
-const SEED_INQUIRIES = [
+export const SEED_INQUIRIES = [
   {
     id: "inq-101",
     property_id: "prop-goa-01",
@@ -378,11 +378,11 @@ const SEED_INQUIRIES = [
   }
 ];
 
-const CITIES_LIST = ["All Cities", "Goa", "Bengaluru", "Mumbai", "Jaipur", "Manali", "Rishikesh"];
+export const CITIES_LIST = ["All Cities", "Goa", "Bengaluru", "Mumbai", "Jaipur", "Manali", "Rishikesh"];
 
-const PROPERTY_TYPES = ["All Types", "Villa", "Apartment", "Penthouse", "Independent House"];
+export const PROPERTY_TYPES = ["All Types", "Villa", "Apartment", "Penthouse", "Independent House"];
 
-const STR_FILTER_OPTIONS = [
+export const STR_FILTER_OPTIONS = [
   "Society NOC Ready",
   "Smart Lock Installed",
   "Private Pool",
@@ -393,10 +393,3 @@ const STR_FILTER_OPTIONS = [
   "Mountain View",
   "River View"
 ];
-
-// Export to window for vanilla SPA access
-window.SEED_PROPERTIES = SEED_PROPERTIES;
-window.SEED_INQUIRIES = SEED_INQUIRIES;
-window.CITIES_LIST = CITIES_LIST;
-window.PROPERTY_TYPES = PROPERTY_TYPES;
-window.STR_FILTER_OPTIONS = STR_FILTER_OPTIONS;

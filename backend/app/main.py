@@ -51,24 +51,39 @@ def health():
 uploads_dir = settings.uploads_path
 app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
 
+DIST_DIR = FRONTEND_DIR / "dist"
+PUBLIC_DIR = FRONTEND_DIR / "public"
+
+
+def _frontend_index() -> Path:
+    dist_index = DIST_DIR / "index.html"
+    if dist_index.exists():
+        return dist_index
+    return FRONTEND_DIR / "index.html"
+
+
+if DIST_DIR.exists() and (DIST_DIR / "assets").exists():
+    app.mount("/assets", StaticFiles(directory=str(DIST_DIR / "assets")), name="frontend-assets")
+
 if FRONTEND_DIR.exists():
-    app.mount("/css", StaticFiles(directory=str(FRONTEND_DIR / "css")), name="css")
-    app.mount("/js", StaticFiles(directory=str(FRONTEND_DIR / "js")), name="js")
+    css_dir = FRONTEND_DIR / "css"
+    if css_dir.exists():
+        app.mount("/css", StaticFiles(directory=str(css_dir)), name="css")
 
     @app.get("/")
     def index():
-        return FileResponse(FRONTEND_DIR / "index.html")
+        return FileResponse(_frontend_index())
 
     @app.get("/login.html")
     def login_page():
-        path = FRONTEND_DIR / "login.html"
-        if path.exists():
-            return FileResponse(path)
-        return FileResponse(FRONTEND_DIR / "index.html")
+        for path in (PUBLIC_DIR / "login.html", FRONTEND_DIR / "login.html"):
+            if path.exists():
+                return FileResponse(path)
+        return FileResponse(_frontend_index())
 
     @app.get("/signup.html")
     def signup_page():
-        path = FRONTEND_DIR / "signup.html"
-        if path.exists():
-            return FileResponse(path)
-        return FileResponse(FRONTEND_DIR / "index.html")
+        for path in (PUBLIC_DIR / "signup.html", FRONTEND_DIR / "signup.html"):
+            if path.exists():
+                return FileResponse(path)
+        return FileResponse(_frontend_index())
