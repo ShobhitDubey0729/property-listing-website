@@ -1,8 +1,10 @@
 # PropLease backend
 
-Python 3.11+ FastAPI API for the existing PropLease HTML/CSS/JS frontend.
+Python 3.11+ FastAPI API for the PropLease React 18 frontend.
 
 ## Local run
+
+Terminal 1 — API:
 
 ```bash
 cd backend
@@ -13,11 +15,25 @@ cp .env.example .env
 uvicorn app.main:app --reload --port 8000
 ```
 
+Terminal 2 — React (Vite proxies `/api` and `/uploads` to port 8000):
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
 Open:
 
-- Frontend: http://localhost:8000
+- React app: http://localhost:5173
 - API docs: http://localhost:8000/docs
-- Alternate static frontend: `cd ../frontend && python3 -m http.server 5500`
+
+To serve a production build from FastAPI on port 8000:
+
+```bash
+cd frontend && npm run build
+cd ../backend && uvicorn app.main:app --reload --port 8000
+```
 
 Demo accounts (password `password123`):
 
