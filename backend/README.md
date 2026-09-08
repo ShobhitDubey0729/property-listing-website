@@ -54,6 +54,20 @@ Local default database is SQLite (`proplease.db`) so the MVP runs with zero paid
 
 ## Render
 
-Build: `pip install -r requirements.txt`  
-Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`  
-Root directory: `backend`
+The React app must be **built** on deploy. `frontend/index.html` is Vite’s development page (`/src/main.jsx`); production files live in `frontend/dist` after `npm run build`. That folder is gitignored, so `pip install` alone will serve a blank/broken site.
+
+Web Service settings:
+
+| Setting | Value |
+| --- | --- |
+| Root Directory | `backend` |
+| Build Command | `bash scripts/render-build.sh` |
+| Start Command | `uvicorn app.main:app --host 0.0.0.0 --port $PORT` |
+
+Environment:
+
+- `FRONTEND_URL=https://<your-service>.onrender.com`
+- `CORS_ORIGINS=https://<your-service>.onrender.com`
+- `DATABASE_URL`, `JWT_SECRET` as usual
+
+Then **Manual Deploy** so the new build command runs. Confirm the build log includes `vite build` and `dist/assets`.

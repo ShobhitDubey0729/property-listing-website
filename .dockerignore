@@ -1,0 +1,13 @@
+# Context is the repository root
+.git
+**/.venv
+**/node_modules
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/*.db
+**/*.sqlite
+backend/uploads
+**/.env
+frontend/dist
+.DS_Store

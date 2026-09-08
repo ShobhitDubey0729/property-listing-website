@@ -69,8 +69,10 @@ pytest
 
 1. Push this repo to GitHub.
 2. Create a Supabase project, run `database/migrations/001_init.sql`, create storage bucket `property-images`.
-3. Render Web Service: root `backend`, start `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
-4. Render Static Site: publish directory `frontend`, set `API_BASE_URL` in `frontend/js/config.js` or inject at build time.
-5. Set `DATABASE_URL`, `JWT_SECRET`, `FRONTEND_URL`, and Supabase keys **only** on the backend.
+3. Render Web Service (same origin for API + React):
+   - Root Directory: `backend`
+   - Build Command: `bash scripts/render-build.sh`
+   - Start Command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+4. Set `DATABASE_URL`, `JWT_SECRET`, `FRONTEND_URL=https://<service>.onrender.com`, and `CORS_ORIGINS` to that same URL. Supabase keys stay **only** on the backend.
 
 Never put `SUPABASE_SERVICE_ROLE_KEY` in frontend JavaScript.

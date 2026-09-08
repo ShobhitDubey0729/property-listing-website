@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
@@ -52,38 +52,35 @@ uploads_dir = settings.uploads_path
 app.mount("/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
 
 DIST_DIR = FRONTEND_DIR / "dist"
-PUBLIC_DIR = FRONTEND_DIR / "public"
 
 
-def _frontend_index() -> Path:
-    dist_index = DIST_DIR / "index.html"
-    if dist_index.exists():
-        return dist_index
-    return FRONTEND_DIR / "index.html"
+def _dist_file(name: str) -> Path:
+    path = DIST_DIR / name
+    if not path.is_file():
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "Frontend production build is missing. On Render, set the build command to "
+                "`bash scripts/render-build.sh` (Root Directory: backend) so `frontend/dist` is created."
+            ),
+        )
+    return path
 
 
-if DIST_DIR.exists() and (DIST_DIR / "assets").exists():
+if (DIST_DIR / "assets").is_dir():
     app.mount("/assets", StaticFiles(directory=str(DIST_DIR / "assets")), name="frontend-assets")
 
-if FRONTEND_DIR.exists():
-    css_dir = FRONTEND_DIR / "css"
-    if css_dir.exists():
-        app.mount("/css", StaticFiles(directory=str(css_dir)), name="css")
 
-    @app.get("/")
-    def index():
-        return FileResponse(_frontend_index())
+@app.get("/")
+def index():
+    return FileResponse(_dist_file("index.html"))
 
-    @app.get("/login.html")
-    def login_page():
-        for path in (PUBLIC_DIR / "login.html", FRONTEND_DIR / "login.html"):
-            if path.exists():
-                return FileResponse(path)
-        return FileResponse(_frontend_index())
 
-    @app.get("/signup.html")
-    def signup_page():
-        for path in (PUBLIC_DIR / "signup.html", FRONTEND_DIR / "signup.html"):
-            if path.exists():
-                return FileResponse(path)
-        return FileResponse(_frontend_index())
+@app.get("/login.html")
+def login_page():
+    return FileResponse(_dist_file("login.html"))
+
+
+@app.get("/signup.html")
+def signup_page():
+    return FileResponse(_dist_file("signup.html"))
